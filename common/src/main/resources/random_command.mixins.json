@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "package": "com.iafenvoy.random.command.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
+  "client": [
+  ],
+  "mixins": [
+    "CommandManagerMixin",
+    "MinecraftServerMixin",
+    "ServerLoginNetworkHandlerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

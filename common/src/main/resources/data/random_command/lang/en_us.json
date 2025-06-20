@@ -1,0 +1,8 @@
+{
+  "message.random_command.accept": "[Accept]",
+  "message.random_command.blacklist": "[Blacklist]",
+  "message.random_command.deny": "[Deny]",
+  "message.random_command.tpa.blacklisted": "You have been blacklisted!",
+  "message.random_command.tpa.request_sent": "Your request has been sent! They have 60s to accept.",
+  "message.random_command.tpa.request_tpa": "%s want to teleport to you."
+}
