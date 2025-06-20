@@ -23,13 +23,7 @@
     "random_command.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.16.14",
-    "minecraft": "~1.20.1",
-    "java": ">=17",
-    "architectury": ">=9.2.14",
-    "": "*"
-  },
-  "suggests": {
-    "another-mod": "*"
+    "fabricloader": "*",
+    "minecraft": "~1.20.1"
   }
 }

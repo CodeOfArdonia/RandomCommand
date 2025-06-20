@@ -1,8 +1,14 @@
 {
-  "message.random_command.accept": "[Accept]",
-  "message.random_command.blacklist": "[Blacklist]",
-  "message.random_command.deny": "[Deny]",
+  "message.random_command.accept": "[Accept] ",
+  "message.random_command.blacklist": "[Blacklist] ",
+  "message.random_command.deny": "[Deny] ",
+  "message.random_command.tpa.accepted_request": "Accepted %s request",
+  "message.random_command.tpa.already_sent": "You have already sent a request!",
   "message.random_command.tpa.blacklisted": "You have been blacklisted!",
+  "message.random_command.tpa.no_sent": "This player hasn't sent a request yet!",
+  "message.random_command.tpa.other_accepted": "%s accept your request!",
   "message.random_command.tpa.request_sent": "Your request has been sent! They have 60s to accept.",
-  "message.random_command.tpa.request_tpa": "%s want to teleport to you."
+  "message.random_command.tpa.request_tpa": "%s want to teleport to you. ",
+  "message.random_command.tpa.request_tpahere": "%s want you to teleport to him/her. ",
+  "message.random_command.tpa.teleport_in_second": "Teleport in %s seconds."
 }

@@ -3,6 +3,7 @@ package com.iafenvoy.random.command.data;
 import com.google.gson.JsonParser;
 import com.iafenvoy.random.command.RandomCommand;
 import com.iafenvoy.random.command.data.component.Component;
+import com.iafenvoy.random.command.mixin.WorldSavePathAccessor;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.JsonOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -22,7 +23,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public class PlayerData {
-    private static final WorldSavePath PLAYER_DATA = new WorldSavePath("%s/player".formatted(RandomCommand.MOD_ID));
+    private static final WorldSavePath PLAYER_DATA = WorldSavePathAccessor.create("%s/player".formatted(RandomCommand.MOD_ID));
     public static final Codec<PlayerData> CODEC = RecordCodecBuilder.create(i -> i.group(
             Uuids.CODEC.fieldOf("uuid").forGetter(PlayerData::getUuid),
             Codec.STRING.fieldOf("name").forGetter(PlayerData::getName),
@@ -31,8 +32,8 @@ public class PlayerData {
     ).apply(i, PlayerData::new));
     private boolean dirty;
     private final UUID uuid;
-    private String name;
-    private String ip;
+    private String name = "";
+    private String ip = "127.0.0.1";
     private final List<Component<?>> components = new LinkedList<>();
 
     public PlayerData(UUID uuid) {

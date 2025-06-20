@@ -1,6 +1,7 @@
 package com.iafenvoy.random.command.mixin;
 
 import com.iafenvoy.random.command.command.TourCommand;
+import com.iafenvoy.random.command.command.TpaCommands;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.server.command.CommandManager;
@@ -21,5 +22,6 @@ public class CommandManagerMixin {
     @Inject(method = "<init>", at = @At("RETURN"))
     private void registerCommands(CommandManager.RegistrationEnvironment environment, CommandRegistryAccess commandRegistryAccess, CallbackInfo ci) {
         TourCommand.register(this.dispatcher);
+        TpaCommands.register(this.dispatcher);
     }
 }

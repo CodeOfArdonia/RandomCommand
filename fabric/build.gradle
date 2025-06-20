@@ -34,7 +34,7 @@ dependencies {
     shadowBundle project(path: ':common', configuration: 'transformProductionFabric')
 
     modImplementation "maven.modrinth:server-i18n-api:zzdH3MQV"
-    modImplementation(include("me.lucko:fabric-permissions-api:0.3.1"))
+    modImplementation(include("maven.modrinth:fabric-permissions-api:0.3.1"))
 }
 
 processResources {
