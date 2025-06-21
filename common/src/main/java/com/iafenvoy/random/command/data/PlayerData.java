@@ -21,6 +21,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.function.Supplier;
 
 public class PlayerData {
     private static final WorldSavePath PLAYER_DATA = WorldSavePathAccessor.create("%s/player".formatted(RandomCommand.MOD_ID));
@@ -101,6 +102,16 @@ public class PlayerData {
     public void setIp(String ip) {
         this.ip = ip;
         this.markDirty();
+    }
+
+    public <T extends Component<T>> T computeIfAbsent(@NotNull Class<T> clazz, Supplier<T> mapper) {
+        Optional<T> optional = this.getComponent(clazz);
+        if (optional.isEmpty()) {
+            T component = mapper.get();
+            this.setComponent(component);
+            return component;
+        }
+        return optional.get();
     }
 
     public <T extends Component<T>> Optional<T> getComponent(@NotNull Class<T> clazz) {

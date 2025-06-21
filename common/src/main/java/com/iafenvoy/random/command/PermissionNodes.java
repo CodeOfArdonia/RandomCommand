@@ -6,6 +6,8 @@ public final class PermissionNodes {
     public static final NodeHolder TPAHERE = new NodeHolder("tpa.tpahere", 0);
     public static final NodeHolder TPACCEPT = new NodeHolder("tpa.tpaccept", 0);
     public static final NodeHolder TPDENY = new NodeHolder("tpa.tpdeny", 0);
+    public static final NodeHolder TPBL = new NodeHolder("tpa.tpbl", 0);
+    public static final NodeHolder TPUNBL = new NodeHolder("tpa.tpunbl", 0);
 
     public static void init() {
     }
