@@ -9,6 +9,7 @@
     "CommandManagerMixin",
     "MinecraftServerMixin",
     "ServerLoginNetworkHandlerMixin",
+    "ServerPlayerEntityMixin",
     "WorldSavePathAccessor"
   ],
   "injectors": {

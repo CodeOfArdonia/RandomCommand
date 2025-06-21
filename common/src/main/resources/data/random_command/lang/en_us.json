@@ -2,6 +2,7 @@
   "message.random_command.accept": "[Accept] ",
   "message.random_command.blacklist": "[Blacklist] ",
   "message.random_command.deny": "[Deny] ",
+  "message.random_command.teleporting": "Teleporting...",
   "message.random_command.tpa.accepted_request": "You have accepted %s's request",
   "message.random_command.tpa.already_sent": "You have already sent a request!",
   "message.random_command.tpa.blacklisted": "You have been blacklisted!",

@@ -145,7 +145,7 @@ public final class TpaCommands {
                             ServerCommandSource source = ctx.getSource();
                             ServerPlayerEntity player = source.getPlayerOrThrow(), target = EntityArgumentType.getPlayer(ctx, "player");
                             RECEIVED_REQUESTS.computeIfAbsent(player, p -> new HashMap<>()).remove(target);
-                            DataManager.getData(player).computeIfAbsent(TpaComponent.class, TpaComponent::new).blacklist().add(target.getUuid());
+                            DataManager.getData(player).getOrCreateComponent(TpaComponent.class, TpaComponent::new).blacklist().add(target.getUuid());
                             player.sendMessage(ServerI18n.translateToLiteral(player, "message.random_command.tpa.blacklisted_player", target.getEntityName()));
                             return 1;
                         })));
@@ -155,7 +155,7 @@ public final class TpaCommands {
                         .executes(ctx -> {
                             ServerCommandSource source = ctx.getSource();
                             ServerPlayerEntity player = source.getPlayerOrThrow(), target = EntityArgumentType.getPlayer(ctx, "player");
-                            DataManager.getData(player).computeIfAbsent(TpaComponent.class, TpaComponent::new).blacklist().remove(target.getUuid());
+                            DataManager.getData(player).getOrCreateComponent(TpaComponent.class, TpaComponent::new).blacklist().remove(target.getUuid());
                             player.sendMessage(ServerI18n.translateToLiteral(player, "message.random_command.tpa.unblacklisted_player", target.getEntityName()));
                             return 1;
                         })));

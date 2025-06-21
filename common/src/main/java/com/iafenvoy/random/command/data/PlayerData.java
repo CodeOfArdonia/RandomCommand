@@ -104,7 +104,7 @@ public class PlayerData {
         this.markDirty();
     }
 
-    public <T extends Component<T>> T computeIfAbsent(@NotNull Class<T> clazz, Supplier<T> mapper) {
+    public <T extends Component<T>> T getOrCreateComponent(@NotNull Class<T> clazz, Supplier<T> mapper) {
         Optional<T> optional = this.getComponent(clazz);
         if (optional.isEmpty()) {
             T component = mapper.get();

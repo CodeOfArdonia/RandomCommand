@@ -4,11 +4,11 @@ import com.iafenvoy.random.command.PermissionNodes;
 import com.iafenvoy.random.command.data.DataManager;
 import com.iafenvoy.random.command.data.PlayerData;
 import com.iafenvoy.random.command.data.component.builtin.TourComponent;
+import com.iafenvoy.random.command.util.GlobalVec3d;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.GlobalPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.GameMode;
 
@@ -28,14 +28,14 @@ public final class TourCommand {
                         Optional<TourComponent> optional = data.getComponent(TourComponent.class);
                         if (optional.isEmpty()) return 0;
                         TourComponent component = optional.get();
-                        GlobalPos pos = component.pos();
-                        ServerWorld target = source.getServer().getWorld(pos.getDimension());
-                        Vec3d p = pos.getPos().toCenterPos();
+                        GlobalVec3d pos = component.pos();
+                        ServerWorld target = source.getServer().getWorld(pos.world());
+                        Vec3d p = pos.pos();
                         player.teleport(target, p.x, p.y, p.z, player.getYaw(), player.getPitch());
                         player.changeGameMode(component.lastGameMode());
                         data.removeComponent(TourComponent.class);
                     } else {
-                        data.setComponent(new TourComponent(player.interactionManager.getGameMode(), player.getWorld().getRegistryKey(), player.getBlockPos()));
+                        data.setComponent(new TourComponent(player.interactionManager.getGameMode(), player.getWorld().getRegistryKey(), player.getPos()));
                         player.changeGameMode(GameMode.SPECTATOR);
                     }
                     return 1;
