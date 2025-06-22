@@ -1,0 +1,22 @@
+# Pending Commands
+
+- afk
+- alt
+- anvil
+- ~~back~~
+- enderchest
+- fly
+- hat
+- home series
+- inventory see
+- lightning
+- loom
+- mute series
+- nick
+- rtp
+- skull
+- smithing
+- ~~tpa series~~
+- ~~tour~~
+- warp series
+- workbench
