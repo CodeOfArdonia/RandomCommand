@@ -2,20 +2,21 @@
 
 - afk
 - alt
-- anvil
+- ~~anvil~~
 - ~~back~~
-- enderchest
+- ~~ender chest~~
 - fly
-- hat
+- ~~hat~~
 - home series
 - inventory see
-- lightning
+- ~~lightning~~
 - loom
 - mute series
 - nick
 - rtp
 - skull
 - smithing
+- stone cutter
 - ~~tpa series~~
 - ~~tour~~
 - warp series

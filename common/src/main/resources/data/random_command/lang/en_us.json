@@ -2,6 +2,7 @@
   "message.random_command.accept": "[Accept] ",
   "message.random_command.blacklist": "[Blacklist] ",
   "message.random_command.deny": "[Deny] ",
+  "message.random_command.hat.empty": "Put what you want to wear in hand!",
   "message.random_command.teleporting": "Teleporting...",
   "message.random_command.tpa.accepted_request": "You have accepted %s's request",
   "message.random_command.tpa.already_sent": "You have already sent a request!",
@@ -17,5 +18,7 @@
   "message.random_command.tpa.request_tpahere": "%s want you to teleport to him/her. ",
   "message.random_command.tpa.response_expired": "Teleport request from %s has expired",
   "message.random_command.tpa.teleport_in_second": "Teleport in %s seconds.",
-  "message.random_command.tpa.unblacklisted_player": "Unblacklisted %s"
+  "message.random_command.tpa.unblacklisted_player": "Unblacklisted %s",
+  "message.random_command.lightning.hit_player": "Lightning hit %s",
+  "message.random_command.lightning.hit": "Lightning hit you!"
 }

@@ -1,7 +1,11 @@
 package com.iafenvoy.random.command;
 
 public final class PermissionNodes {
+    public static final NodeHolder ANVIL = new NodeHolder("anvil", 0);
     public static final NodeHolder BACK = new NodeHolder("back", 0);
+    public static final NodeHolder ENDER_CHEST = new NodeHolder("ender_chest", 0);
+    public static final NodeHolder HAT = new NodeHolder("hat", 0);
+    public static final NodeHolder LIGHTNING = new NodeHolder("lightning", 0);
     public static final NodeHolder TOUR = new NodeHolder("tour", 0);
     public static final NodeHolder TPA = new NodeHolder("tpa.tpa", 0);
     public static final NodeHolder TPAHERE = new NodeHolder("tpa.tpahere", 0);
