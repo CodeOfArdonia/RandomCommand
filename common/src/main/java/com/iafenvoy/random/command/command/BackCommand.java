@@ -28,7 +28,7 @@ public final class BackCommand {
                         Vec3d pos = component.pos().pos();
                         if (world != null) {
                             player.teleport(world, pos.x, pos.y, pos.z, player.getYaw(), player.getPitch());
-                            player.sendMessage(ServerI18n.translateToLiteral(player, "message.random_command.teleporting"));
+                            ServerI18n.sendMessage(player, "message.random_command.teleporting");
                             return 1;
                         }
                     }

@@ -8,5 +8,5 @@ dependencies {
     // Do NOT use other classes from Fabric Loader.
     modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
 
-    modImplementation "maven.modrinth:server-i18n-api:zzdH3MQV"
+    modImplementation "maven.modrinth:server-i18n-api:y6yHlaJo"
 }

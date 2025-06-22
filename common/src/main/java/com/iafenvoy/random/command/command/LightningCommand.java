@@ -24,8 +24,8 @@ public final class LightningCommand {
                             lightning.setPosition(target.getPos());
                             lightning.setCosmetic(false);
                             source.getWorld().spawnEntity(lightning);
-                            player.sendMessage(ServerI18n.translateToLiteral(player, "message.random_command.lightning.hit_player", target.getEntityName()));
-                            target.sendMessage(ServerI18n.translateToLiteral(target, "message.random_command.lightning.hit"));
+                            ServerI18n.sendMessage(player, "message.random_command.lightning.hit_player", target.getEntityName());
+                            ServerI18n.sendMessage(target, "message.random_command.lightning.hit");
                             return 1;
                         })));
     }

@@ -33,7 +33,7 @@ dependencies {
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionFabric')
 
-    modImplementation "maven.modrinth:server-i18n-api:zzdH3MQV"
+    modImplementation "maven.modrinth:server-i18n-api:y6yHlaJo"
     modImplementation(include("maven.modrinth:fabric-permissions-api:0.3.1"))
 }
 

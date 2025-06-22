@@ -19,7 +19,7 @@ public final class HatCommand {
                     ServerPlayerEntity player = source.getPlayerOrThrow();
                     ItemStack stack = player.getMainHandStack(), helmet = player.getEquippedStack(EquipmentSlot.HEAD);
                     if (stack.isEmpty()) {
-                        player.sendMessage(ServerI18n.translateToLiteral(player, "message.random_command.hat.empty"));
+                        ServerI18n.sendMessage(player, "message.random_command.hat.empty");
                         return 0;
                     }
                     player.equipStack(EquipmentSlot.HEAD, stack.split(1));

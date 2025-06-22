@@ -36,9 +36,9 @@ dependencies {
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionForge')
 
-    modImplementation "maven.modrinth:server-i18n-api:Zv0e6IXU"
+    modImplementation "maven.modrinth:server-i18n-api:b5lMdNPB"
 
-    implementation 'net.luckperms:api:5.4' // 使用最新版本
+    implementation 'net.luckperms:api:5.4'
 }
 
 processResources {

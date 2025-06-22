@@ -33,8 +33,8 @@ public final class TpaCommands {
                 Map.Entry<ServerPlayerEntity, LongBooleanPair> e = it.next();
                 if (c > e.getValue().firstLong() + 60 * 1000) {
                     ServerPlayerEntity target = e.getKey();
-                    player.sendMessage(ServerI18n.translateToLiteral(player, "message.random_command.tpa.response_expired", target.getEntityName()));
-                    target.sendMessage(ServerI18n.translateToLiteral(target, "message.random_command.tpa.request_expired", player.getEntityName()));
+                    ServerI18n.sendMessage(player, "message.random_command.tpa.response_expired", target.getEntityName());
+                    ServerI18n.sendMessage(target, "message.random_command.tpa.request_expired", player.getEntityName());
                     it.remove();
                 }
             }
@@ -49,16 +49,16 @@ public final class TpaCommands {
                             ServerCommandSource source = ctx.getSource();
                             ServerPlayerEntity player = source.getPlayerOrThrow(), target = EntityArgumentType.getPlayer(ctx, "player");
                             if (DataManager.getData(target).getComponent(TpaComponent.class).map(x -> x.blacklist().contains(player.getUuid())).orElse(false)) {
-                                player.sendMessage(ServerI18n.translateToLiteral(player, "message.random_command.tpa.blacklisted"));
+                                ServerI18n.sendMessage(player, "message.random_command.tpa.blacklisted");
                                 return 0;
                             }
                             Map<ServerPlayerEntity, LongBooleanPair> map = RECEIVED_REQUESTS.computeIfAbsent(target, p -> new HashMap<>());
                             if (map.containsKey(player)) {
-                                player.sendMessage(ServerI18n.translateToLiteral(player, "message.random_command.tpa.already_sent"));
+                                ServerI18n.sendMessage(player, "message.random_command.tpa.already_sent");
                                 return 0;
                             }
                             map.put(player, LongBooleanPair.of(System.currentTimeMillis(), true));
-                            player.sendMessage(ServerI18n.translateToLiteral(player, "message.random_command.tpa.request_sent"));
+                            ServerI18n.sendMessage(player, "message.random_command.tpa.request_sent");
                             target.sendMessage(ServerI18n.translateToLiteral(target, "message.random_command.tpa.request_tpa", player.getEntityName()).copy()
                                     .append(TextUtil.buttonFormat(ServerI18n.translateToLiteral(player, "message.random_command.accept"), "/tpaccept " + player.getEntityName(), Formatting.GREEN, Formatting.BOLD))
                                     .append(TextUtil.buttonFormat(ServerI18n.translateToLiteral(player, "message.random_command.deny"), "/tpdeny " + player.getEntityName(), Formatting.RED, Formatting.BOLD))
@@ -73,16 +73,16 @@ public final class TpaCommands {
                             ServerCommandSource source = ctx.getSource();
                             ServerPlayerEntity player = source.getPlayerOrThrow(), target = EntityArgumentType.getPlayer(ctx, "player");
                             if (DataManager.getData(target).getComponent(TpaComponent.class).map(x -> x.blacklist().contains(player.getUuid())).orElse(false)) {
-                                player.sendMessage(ServerI18n.translateToLiteral(player, "message.random_command.tpa.blacklisted"));
+                                ServerI18n.sendMessage(player, "message.random_command.tpa.blacklisted");
                                 return 0;
                             }
                             Map<ServerPlayerEntity, LongBooleanPair> map = RECEIVED_REQUESTS.computeIfAbsent(target, p -> new HashMap<>());
                             if (map.containsKey(player)) {
-                                player.sendMessage(ServerI18n.translateToLiteral(player, "message.random_command.tpa.already_sent"));
+                                ServerI18n.sendMessage(player, "message.random_command.tpa.already_sent");
                                 return 0;
                             }
                             map.put(player, LongBooleanPair.of(System.currentTimeMillis(), false));
-                            player.sendMessage(ServerI18n.translateToLiteral(player, "message.random_command.tpa.request_sent"));
+                            ServerI18n.sendMessage(player, "message.random_command.tpa.request_sent");
                             target.sendMessage(ServerI18n.translateToLiteral(target, "message.random_command.tpa.request_tpahere", player.getEntityName()).copy()
                                     .append(TextUtil.buttonFormat(ServerI18n.translateToLiteral(player, "message.random_command.accept"), "/tpaccept " + player.getEntityName(), Formatting.GREEN, Formatting.BOLD))
                                     .append(TextUtil.buttonFormat(ServerI18n.translateToLiteral(player, "message.random_command.deny"), "/tpdeny " + player.getEntityName(), Formatting.RED, Formatting.BOLD))
@@ -103,8 +103,8 @@ public final class TpaCommands {
                             }
                             boolean dir = map.get(target).rightBoolean();
                             map.remove(target);
-                            player.sendMessage(ServerI18n.translateToLiteral(player, "message.random_command.tpa.accepted_request", target.getEntityName()));
-                            target.sendMessage(ServerI18n.translateToLiteral(target, "message.random_command.tpa.other_accepted", player.getEntityName()));
+                            ServerI18n.sendMessage(player, "message.random_command.tpa.accepted_request", target.getEntityName());
+                            ServerI18n.sendMessage(target, "message.random_command.tpa.other_accepted", player.getEntityName());
 
                             player.sendMessage(ServerI18n.translateToLiteral(player, "message.random_command.tpa.teleport_in_second", "3"), true);
                             target.sendMessage(ServerI18n.translateToLiteral(target, "message.random_command.tpa.teleport_in_second", "3"), true);
@@ -130,12 +130,12 @@ public final class TpaCommands {
                             ServerPlayerEntity player = source.getPlayerOrThrow(), target = EntityArgumentType.getPlayer(ctx, "player");
                             Map<ServerPlayerEntity, LongBooleanPair> map = RECEIVED_REQUESTS.computeIfAbsent(player, p -> new HashMap<>());
                             if (!map.containsKey(target)) {
-                                player.sendMessage(ServerI18n.translateToLiteral(player, "message.random_command.tpa.no_sent"));
+                                ServerI18n.sendMessage(player, "message.random_command.tpa.no_sent");
                                 return 0;
                             }
                             map.remove(target);
-                            player.sendMessage(ServerI18n.translateToLiteral(player, "message.random_command.tpa.denied_request", target.getEntityName()));
-                            target.sendMessage(ServerI18n.translateToLiteral(target, "message.random_command.tpa.other_denied", player.getEntityName()));
+                            ServerI18n.sendMessage(player, "message.random_command.tpa.denied_request", target.getEntityName());
+                            ServerI18n.sendMessage(target, "message.random_command.tpa.other_denied", player.getEntityName());
                             return 1;
                         })));
         dispatcher.register(literal("tpbl")
@@ -146,7 +146,7 @@ public final class TpaCommands {
                             ServerPlayerEntity player = source.getPlayerOrThrow(), target = EntityArgumentType.getPlayer(ctx, "player");
                             RECEIVED_REQUESTS.computeIfAbsent(player, p -> new HashMap<>()).remove(target);
                             DataManager.getData(player).getOrCreateComponent(TpaComponent.class, TpaComponent::new).blacklist().add(target.getUuid());
-                            player.sendMessage(ServerI18n.translateToLiteral(player, "message.random_command.tpa.blacklisted_player", target.getEntityName()));
+                            ServerI18n.sendMessage(player, "message.random_command.tpa.blacklisted_player", target.getEntityName());
                             return 1;
                         })));
         dispatcher.register(literal("tpunbl")
@@ -156,7 +156,7 @@ public final class TpaCommands {
                             ServerCommandSource source = ctx.getSource();
                             ServerPlayerEntity player = source.getPlayerOrThrow(), target = EntityArgumentType.getPlayer(ctx, "player");
                             DataManager.getData(player).getOrCreateComponent(TpaComponent.class, TpaComponent::new).blacklist().remove(target.getUuid());
-                            player.sendMessage(ServerI18n.translateToLiteral(player, "message.random_command.tpa.unblacklisted_player", target.getEntityName()));
+                            ServerI18n.sendMessage(player, "message.random_command.tpa.unblacklisted_player", target.getEntityName());
                             return 1;
                         })));
     }
