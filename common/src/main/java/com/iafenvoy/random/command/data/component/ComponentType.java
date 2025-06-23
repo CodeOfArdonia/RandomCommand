@@ -8,7 +8,7 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.SimpleRegistry;
 import net.minecraft.util.Identifier;
 
-public record ComponentType<T extends Component<T>>(Codec<T> codec) {
+public record ComponentType<T extends Component>(Codec<T> codec) {
     public static final RegistryKey<Registry<ComponentType<?>>> REGISTRY_KEY = RegistryKey.ofRegistry(Identifier.of(RandomCommand.MOD_ID, "component_type"));
     public static final Registry<ComponentType<?>> REGISTRY = new SimpleRegistry<>(REGISTRY_KEY, Lifecycle.stable());
 

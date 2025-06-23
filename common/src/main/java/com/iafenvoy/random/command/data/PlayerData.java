@@ -35,13 +35,13 @@ public class PlayerData {
     private final UUID uuid;
     private String name = "";
     private String ip = "127.0.0.1";
-    private final List<Component<?>> components = new LinkedList<>();
+    private final List<Component> components = new LinkedList<>();
 
     public PlayerData(UUID uuid) {
         this.uuid = uuid;
     }
 
-    private PlayerData(UUID uuid, String name, String ip, List<Component<?>> components) {
+    private PlayerData(UUID uuid, String name, String ip, List<Component> components) {
         this.uuid = uuid;
         this.name = name;
         this.ip = ip;
@@ -104,27 +104,25 @@ public class PlayerData {
         this.markDirty();
     }
 
-    public <T extends Component<T>> T getOrCreateComponent(@NotNull Class<T> clazz, Supplier<T> mapper) {
+    public <T extends Component> T getOrCreateComponent(@NotNull Class<T> clazz, Supplier<T> mapper) {
         Optional<T> optional = this.getComponent(clazz);
-        if (optional.isEmpty()) {
-            T component = mapper.get();
-            this.setComponent(component);
-            return component;
-        }
-        return optional.get();
+        if (optional.isPresent()) return optional.get();
+        T component = mapper.get();
+        this.setComponent(component);
+        return component;
     }
 
-    public <T extends Component<T>> Optional<T> getComponent(@NotNull Class<T> clazz) {
+    public <T extends Component> Optional<T> getComponent(@NotNull Class<T> clazz) {
         return this.components.stream().filter(x -> clazz.isAssignableFrom(x.getClass())).map(clazz::cast).findAny();
     }
 
-    public <T extends Component<T>> void setComponent(@NotNull T component) {
+    public <T extends Component> void setComponent(@NotNull T component) {
         this.components.removeIf(x -> component.getClass().isAssignableFrom(x.getClass()));
         this.components.add(component);
         this.markDirty();
     }
 
-    public <T extends Component<T>> void removeComponent(@NotNull Class<T> clazz) {
+    public <T extends Component> void removeComponent(@NotNull Class<T> clazz) {
         this.components.removeIf(x -> clazz.isAssignableFrom(x.getClass()));
         this.markDirty();
     }

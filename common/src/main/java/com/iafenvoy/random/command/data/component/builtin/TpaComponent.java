@@ -11,7 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
 
-public record TpaComponent(List<UUID> blacklist) implements Component<TpaComponent> {
+public record TpaComponent(List<UUID> blacklist) implements Component {
     public static final Codec<TpaComponent> CODEC = RecordCodecBuilder.create(i -> i.group(
             Uuids.CODEC.listOf().fieldOf("blacklist").forGetter(TpaComponent::blacklist)
     ).apply(i, TpaComponent::new));
@@ -25,7 +25,7 @@ public record TpaComponent(List<UUID> blacklist) implements Component<TpaCompone
     }
 
     @Override
-    public ComponentType<TpaComponent> getType() {
+    public ComponentType<?> getType() {
         return ComponentTypes.TPA;
     }
 }

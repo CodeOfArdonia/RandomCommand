@@ -13,7 +13,7 @@ import static net.minecraft.server.command.CommandManager.literal;
 
 public final class EnderChestCommand {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
-        dispatcher.register(literal("ender-chest")
+        dispatcher.register(literal("enderchest")
                 .requires(PermissionNodes.ENDER_CHEST.require().and(ServerCommandSource::isExecutedByPlayer))
                 .executes(ctx -> {
                     ServerCommandSource source = ctx.getSource();

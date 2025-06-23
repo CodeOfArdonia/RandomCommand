@@ -7,13 +7,11 @@ import com.iafenvoy.random.command.util.GlobalVec3d;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.registry.RegistryKey;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.GlobalPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.GameMode;
 import net.minecraft.world.World;
 
-public record TourComponent(GameMode lastGameMode, GlobalVec3d pos) implements Component<TourComponent> {
+public record TourComponent(GameMode lastGameMode, GlobalVec3d pos) implements Component {
     public static final Codec<TourComponent> CODEC = RecordCodecBuilder.create(i -> i.group(
             GameMode.CODEC.fieldOf("lastGameMode").forGetter(TourComponent::lastGameMode),
             GlobalVec3d.CODEC.fieldOf("pos").forGetter(TourComponent::pos)
@@ -24,7 +22,7 @@ public record TourComponent(GameMode lastGameMode, GlobalVec3d pos) implements C
     }
 
     @Override
-    public ComponentType<TourComponent> getType() {
+    public ComponentType<?> getType() {
         return ComponentTypes.TOUR;
     }
 }

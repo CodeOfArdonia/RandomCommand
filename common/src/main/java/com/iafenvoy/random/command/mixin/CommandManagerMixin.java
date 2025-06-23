@@ -24,7 +24,9 @@ public class CommandManagerMixin {
         BackCommand.register(this.dispatcher);
         EnderChestCommand.register(this.dispatcher);
         HatCommand.register(this.dispatcher);
+        HomeCommands.register(this.dispatcher);
         LightningCommand.register(this.dispatcher);
+        SkullCommand.register(this.dispatcher);
         TourCommand.register(this.dispatcher);
         TpaCommands.register(this.dispatcher);
     }

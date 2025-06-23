@@ -7,14 +7,14 @@
 - ~~ender chest~~
 - fly
 - ~~hat~~
-- home series
+- ~~home series~~
 - inventory see
 - ~~lightning~~
 - loom
 - mute series
 - nick
 - rtp
-- skull
+- ~~skull~~
 - smithing
 - stone cutter
 - ~~tpa series~~
