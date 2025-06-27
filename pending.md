@@ -8,7 +8,7 @@
 - fly
 - ~~hat~~
 - ~~home series~~
-- inventory see
+- ~~inventory see~~
 - ~~lightning~~
 - loom
 - mute series
@@ -16,6 +16,7 @@
 - rtp
 - ~~skull~~
 - smithing
+- spawn
 - stone cutter
 - ~~tpa series~~
 - ~~tour~~

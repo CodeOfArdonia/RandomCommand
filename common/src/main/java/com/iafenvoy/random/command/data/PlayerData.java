@@ -3,11 +3,14 @@ package com.iafenvoy.random.command.data;
 import com.google.gson.JsonParser;
 import com.iafenvoy.random.command.RandomCommand;
 import com.iafenvoy.random.command.data.component.Component;
+import com.iafenvoy.random.command.data.component.builtin.AfkComponent;
+import com.iafenvoy.random.command.data.component.builtin.GlobalDataComponent;
 import com.iafenvoy.random.command.mixin.WorldSavePathAccessor;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.JsonOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Uuids;
 import net.minecraft.util.WorldSavePath;
 import org.apache.commons.io.FileUtils;
@@ -102,6 +105,17 @@ public class PlayerData {
     public void setIp(String ip) {
         this.ip = ip;
         this.markDirty();
+    }
+
+    public void tick(ServerPlayerEntity player) {
+        Optional<AfkComponent> optional = this.getComponent(AfkComponent.class);
+        if (optional.isPresent()) optional.get().pos().teleport(player.server, player);
+        else if (player.server.getTicks() - this.getGlobalData().getLastActionTick() > 20 * 60)
+            AfkHelper.enter(player, this);
+    }
+
+    public GlobalDataComponent getGlobalData() {
+        return this.getOrCreateComponent(GlobalDataComponent.class, GlobalDataComponent::new);
     }
 
     public <T extends Component> T getOrCreateComponent(@NotNull Class<T> clazz, Supplier<T> mapper) {
