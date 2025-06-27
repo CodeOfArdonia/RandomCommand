@@ -20,12 +20,15 @@ public class CommandManagerMixin {
 
     @Inject(method = "<init>", at = @At("RETURN"))
     private void registerCommands(CommandManager.RegistrationEnvironment environment, CommandRegistryAccess commandRegistryAccess, CallbackInfo ci) {
+        AfkCommand.register(this.dispatcher);
         AnvilCommand.register(this.dispatcher);
         BackCommand.register(this.dispatcher);
         EnderChestCommand.register(this.dispatcher);
         HatCommand.register(this.dispatcher);
         HomeCommands.register(this.dispatcher);
+        InvSeeCommand.register(this.dispatcher);
         LightningCommand.register(this.dispatcher);
+        NickCommand.register(this.dispatcher);
         SkullCommand.register(this.dispatcher);
         TourCommand.register(this.dispatcher);
         TpaCommands.register(this.dispatcher);

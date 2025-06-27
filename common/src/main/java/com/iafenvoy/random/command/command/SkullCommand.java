@@ -12,7 +12,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import static net.minecraft.server.command.CommandManager.argument;
 import static net.minecraft.server.command.CommandManager.literal;
 
-public class SkullCommand {
+public final class SkullCommand {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
         dispatcher.register(literal("skull")
                 .requires(PermissionNodes.SKULL.require().and(ServerCommandSource::isExecutedByPlayer))

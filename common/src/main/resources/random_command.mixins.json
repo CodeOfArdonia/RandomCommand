@@ -8,8 +8,10 @@
   "mixins": [
     "CommandManagerMixin",
     "MinecraftServerMixin",
+    "PlayerEntityMixin",
     "ServerLoginNetworkHandlerMixin",
     "ServerPlayerEntityMixin",
+    "ServerPlayNetworkHandlerMixin",
     "WorldSavePathAccessor"
   ],
   "injectors": {

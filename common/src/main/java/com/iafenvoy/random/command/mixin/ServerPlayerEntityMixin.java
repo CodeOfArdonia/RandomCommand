@@ -24,4 +24,19 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
     public void onTeleport(ServerWorld targetWorld, double x, double y, double z, float yaw, float pitch, CallbackInfo ci) {
         DataManager.getData(this.getUuid()).setComponent(new BackComponent(new GlobalVec3d(this)));
     }
+
+    @Inject(method = "enterCombat", at = @At("RETURN"))
+    public void onEnterCombat(CallbackInfo ci) {
+        DataManager.getData(this.getUuid()).getGlobalData().setCombating(true);
+    }
+
+    @Inject(method = "endCombat", at = @At("RETURN"))
+    public void onExitCombat(CallbackInfo ci) {
+        DataManager.getData(this.getUuid()).getGlobalData().setCombating(false);
+    }
+
+    @Inject(method = "tick", at = @At("RETURN"))
+    private void onTick(CallbackInfo ci) {
+        DataManager.getData(this.getUuid()).tick((ServerPlayerEntity) (Object) this);
+    }
 }
