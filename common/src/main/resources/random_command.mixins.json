@@ -6,7 +6,6 @@
   "client": [
   ],
   "mixins": [
-    "CommandManagerMixin",
     "MinecraftServerMixin",
     "PlayerEntityMixin",
     "ServerLoginNetworkHandlerMixin",

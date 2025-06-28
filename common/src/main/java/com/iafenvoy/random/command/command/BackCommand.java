@@ -24,6 +24,7 @@ public final class BackCommand {
                         ServerI18n.sendMessage(player, "message.random_command.teleporting");
                         return 1;
                     }
+                    ServerI18n.sendMessage(player, "message.random_command.back.no_back_point");
                     return 0;
                 }));
     }

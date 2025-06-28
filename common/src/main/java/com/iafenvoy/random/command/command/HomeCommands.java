@@ -7,8 +7,10 @@ import com.iafenvoy.random.command.util.GlobalVec3d;
 import com.iafenvoy.server.i18n.ServerI18n;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.command.argument.EntityArgumentType;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.util.math.BlockPos;
 
 import java.util.Optional;
 
@@ -17,6 +19,20 @@ import static net.minecraft.server.command.CommandManager.literal;
 
 public final class HomeCommands {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
+        dispatcher.register(literal("bed")
+                .requires(PermissionNodes.BED.require().and(ServerCommandSource::isExecutedByPlayer))
+                .executes(ctx -> {
+                    ServerCommandSource source = ctx.getSource();
+                    ServerPlayerEntity player = source.getPlayerOrThrow();
+                    BlockPos spawnPoint = player.getSpawnPointPosition();
+                    if (spawnPoint != null && new GlobalVec3d(player.getSpawnPointDimension(), spawnPoint.toCenterPos()).teleport(source.getServer(), player)) {
+                        ServerI18n.sendMessage(player, "message.random_command.teleporting");
+                        return 1;
+                    }
+                    ServerI18n.sendMessage(player, "message.random_command.bed.no_bed");
+                    return 0;
+                })
+        );
         dispatcher.register(literal("home")
                 .requires(PermissionNodes.HOME.require().and(ServerCommandSource::isExecutedByPlayer))
                 .executes(ctx -> {

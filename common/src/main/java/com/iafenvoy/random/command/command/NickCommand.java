@@ -35,6 +35,13 @@ public final class NickCommand {
                             DataManager.getData(player).setComponent(new NickComponent(nick));
                             ServerI18n.sendMessage(player, "message.random_command.success");
                             return 1;
-                        })));
+                        }))
+                .executes(ctx -> {
+                    ServerCommandSource source = ctx.getSource();
+                    ServerPlayerEntity player = source.getPlayerOrThrow();
+                    DataManager.getData(player).removeComponent(NickComponent.class);
+                    ServerI18n.sendMessage(player, "message.random_command.success");
+                    return 1;
+                }));
     }
 }

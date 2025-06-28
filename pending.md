@@ -1,6 +1,6 @@
 # Pending Commands
 
-- afk
+- ~~afk~~
 - alt
 - ~~anvil~~
 - ~~back~~
@@ -12,13 +12,13 @@
 - ~~lightning~~
 - loom
 - mute series
-- nick
+- ~~nick~~
 - rtp
 - ~~skull~~
 - smithing
-- spawn
+- ~~spawn~~
 - stone cutter
 - ~~tpa series~~
 - ~~tour~~
-- warp series
+- ~~warp series~~
 - workbench

@@ -25,7 +25,7 @@ public class NodeHolderImpl {
         REGISTRY.add(node);
         return source -> {
             try {
-                return PermissionAPI.getOfflinePermission(source.getPlayerOrThrow().getUuid(), node);
+                return PermissionAPI.getPermission(source.getPlayerOrThrow(), node);
             } catch (CommandSyntaxException e) {
                 return false;
             }

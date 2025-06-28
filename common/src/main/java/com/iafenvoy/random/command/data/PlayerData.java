@@ -5,6 +5,7 @@ import com.iafenvoy.random.command.RandomCommand;
 import com.iafenvoy.random.command.data.component.Component;
 import com.iafenvoy.random.command.data.component.builtin.AfkComponent;
 import com.iafenvoy.random.command.data.component.builtin.GlobalDataComponent;
+import com.iafenvoy.random.command.data.helper.AfkHelper;
 import com.iafenvoy.random.command.mixin.WorldSavePathAccessor;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.JsonOps;
@@ -13,6 +14,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Uuids;
 import net.minecraft.util.WorldSavePath;
+import net.minecraft.util.math.Vec3d;
 import org.apache.commons.io.FileUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -109,8 +111,10 @@ public class PlayerData {
 
     public void tick(ServerPlayerEntity player) {
         Optional<AfkComponent> optional = this.getComponent(AfkComponent.class);
-        if (optional.isPresent()) optional.get().pos().teleport(player.server, player);
-        else if (player.server.getTicks() - this.getGlobalData().getLastActionTick() > 20 * 60)
+        if (optional.isPresent()) {
+            Vec3d pos = optional.get().pos().pos();
+            player.teleport(pos.x, pos.y, pos.z);
+        } else if (player.server.getTicks() - this.getGlobalData().getLastActionTick() > 20 * 60)
             AfkHelper.enter(player, this);
     }
 

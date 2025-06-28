@@ -1,7 +1,7 @@
 package com.iafenvoy.random.command.command;
 
 import com.iafenvoy.random.command.PermissionNodes;
-import com.iafenvoy.random.command.data.AfkHelper;
+import com.iafenvoy.random.command.data.helper.AfkHelper;
 import com.iafenvoy.random.command.data.DataManager;
 import com.iafenvoy.random.command.data.PlayerData;
 import com.iafenvoy.random.command.data.component.builtin.AfkComponent;

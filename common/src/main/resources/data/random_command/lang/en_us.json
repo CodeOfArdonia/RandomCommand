@@ -1,9 +1,11 @@
 {
   "message.random_command.accept": "[Accept] ",
-  "message.random_command.afk.in_combat": "Cannot enter AFK while in combat",
   "message.random_command.afk.enter": "%s entered AFK",
+  "message.random_command.afk.in_combat": "Cannot enter AFK while in combat",
   "message.random_command.afk.leave": "%s left AFK",
   "message.random_command.alt.searching": "Searching, please wait...",
+  "message.random_command.back.no_back_point": "No back point recorded!",
+  "message.random_command.bed.no_bed": "Put what you want to wear in hand!",
   "message.random_command.blacklist": "[Blacklist] ",
   "message.random_command.deny": "[Deny] ",
   "message.random_command.hat.empty": "Put what you want to wear in hand!",
@@ -12,6 +14,7 @@
   "message.random_command.home.set_home": "Your home has been set!",
   "message.random_command.lightning.hit": "Lightning hit you!",
   "message.random_command.lightning.hit_player": "Lightning hit %s",
+  "message.random_command.spawn.teleport": "Teleport to spawn",
   "message.random_command.success": "Success!",
   "message.random_command.teleporting": "Teleporting...",
   "message.random_command.tpa.accepted_request": "You have accepted %s's request",
@@ -28,5 +31,8 @@
   "message.random_command.tpa.request_tpahere": "%s want you to teleport to him/her. ",
   "message.random_command.tpa.response_expired": "Teleport request from %s has expired",
   "message.random_command.tpa.teleport_in_second": "Teleport in %s seconds.",
-  "message.random_command.tpa.unblacklisted_player": "Unblacklisted %s"
+  "message.random_command.tpa.unblacklisted_player": "Unblacklisted %s",
+  "message.random_command.wrap.unknown_warp": "Unknown warp point %s",
+  "message.random_command.wrap.warp": "Warp to %s",
+  "message.random_command.wrap.duplicate_id": "Warp point %s already existed!"
 }

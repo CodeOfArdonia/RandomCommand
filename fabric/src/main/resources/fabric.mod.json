@@ -3,16 +3,15 @@
   "id": "random_command",
   "version": "${version}",
   "name": "Random Command",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "description": "A collection of useful, permission controllable commands.",
   "authors": [
-    "Me!"
+    "IAFEnvoy"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "sources": "https://github.com/CodeOfArdonia/RandomCommand"
   },
-  "license": "CC0-1.0",
-  "icon": "assets/random_command/icon.png",
+  "license": "MIT",
+  "icon": "logo.png",
   "environment": "*",
   "entrypoints": {
     "main": [

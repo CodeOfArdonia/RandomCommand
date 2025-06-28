@@ -1,11 +1,11 @@
 package com.iafenvoy.random.command.data;
 
-import com.iafenvoy.random.command.RandomCommand;
 import com.iafenvoy.random.command.Static;
 import com.iafenvoy.random.command.command.TpaCommands;
-import com.iafenvoy.random.command.mixin.WorldSavePathAccessor;
+import com.iafenvoy.random.command.data.helper.AltHelper;
+import com.iafenvoy.random.command.data.helper.WarpHelper;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.WorldSavePath;
+import net.minecraft.server.MinecraftServer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,8 +13,12 @@ import java.util.UUID;
 
 public class DataManager {
     private static final Map<UUID, PlayerData> DATA = new HashMap<>();
-    private static final WorldSavePath ROOT_FOLDER = WorldSavePathAccessor.create(RandomCommand.MOD_ID);
     private static int CD;
+
+    public static void initialize(MinecraftServer server) {
+        AltHelper.load(server);
+        WarpHelper.load(server);
+    }
 
     public static void tick() {
         if (Static.SERVER == null) return;

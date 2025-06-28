@@ -13,7 +13,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MinecraftServerMixin {
     @Inject(method = "<init>", at = @At("RETURN"))
     private void onInit(CallbackInfo ci) {
-        Static.SERVER = (MinecraftServer) (Object) this;
+        MinecraftServer self = (MinecraftServer) (Object) this;
+        Static.SERVER = self;
+        DataManager.initialize(self);
     }
 
     @Inject(method = "tick", at = @At("RETURN"))
