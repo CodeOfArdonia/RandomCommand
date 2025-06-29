@@ -114,8 +114,9 @@ public class PlayerData {
         if (optional.isPresent()) {
             Vec3d pos = optional.get().pos().pos();
             player.teleport(pos.x, pos.y, pos.z);
-        } else if (player.server.getTicks() - this.getGlobalData().getLastActionTick() > 20 * 60)
-            AfkHelper.enter(player, this);
+        }
+//        else if (player.server.getTicks() - this.getGlobalData().getLastActionTick() > 20 * 60)
+//            AfkHelper.enter(player, this);
     }
 
     public GlobalDataComponent getGlobalData() {
